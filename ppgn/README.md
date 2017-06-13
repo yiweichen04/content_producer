@@ -18,7 +18,7 @@ You will need to download a few models to run the examples below. There are `dow
 * The generator network (Noiseless Joint PPGN-h) can be downloaded via: `cd nets/generator/noiseless && ./download.sh`
 * The encoder network (here [BVLC reference CaffeNet](https://github.com/BVLC/caffe/tree/master/models/bvlc_reference_caffenet)): 
 `cd nets/caffenet && ./download.sh`
-* Scene model, download [AlexNet CNN trained on MIT Places dataset](http://places.csail.mit.edu/): `cd nets/placesCNN && python gdrive_download.py`
+* Scene model, download AlexNet CNN trained on MIT Places dataset: `cd nets/placesCNN && python gdrive_download.py`
 
 ### Settings:
 * Paths to the downloaded models are in [settings.py](settings.py). They are relative and should work if the `download.sh` scripts run correctly.
@@ -27,10 +27,10 @@ You will need to download a few models to run the examples below. There are `dow
 ## Examples
 [See original examples](https://github.com/Evolving-AI-Lab/ppgn)
 
-[scene_generation.ipynb](scene_generation.ipynb): 
 Sampling conditioning on the class "lagoon" (output unit #204 of the places365). 
-* Open [scene_generation.ipynb](scene_generation.ipynb) and run it to produces this result:<p 
+* Open [scene_generation.ipynb](scene_generation.ipynb) and run it to produces
+the following result
 
 <p align="center">
-    <img src="http://i.imgur.com/jVp4krY.png" width=700px>
+    <img src="http://i.imgur.com/jVp4krY.png" width=350px>
 </p>
