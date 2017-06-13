@@ -1,3 +1,5 @@
+Models are in https://drive.google.com/a/g2.nctu.edu.tw/file/d/0B323buX5-1N3RktpcWJIamxTSFk/view?usp=sharing
+
 May need to export PYTHONPATH=path_to_StackGAN
 
 In StackGAN/
