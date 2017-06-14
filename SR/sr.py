@@ -25,7 +25,9 @@ FLAGS = flags.FLAGS
 
 
 def super_resolution_initialize():
-	sess = tf.Session()
+        gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.333)
+        sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+	#  sess = tf.Session()
 	# initialization
 	dcgan = DCGAN(sess, image_size=FLAGS.image_size, batch_size=FLAGS.batch_size,
 				dataset_name=FLAGS.dataset, is_crop=FLAGS.is_crop, checkpoint_dir=FLAGS.checkpoint_dir)
@@ -45,10 +47,11 @@ def super_resolution(sess, dcgan, img_path):
 	#	print ('Load model')
 	#	dcgan.load_with_name(FLAGS.checkpoint_dir, 'DCGAN.model-3002')
 	#	#img_path = './input/test.jpg'
+        img_name = img_path.split("/")[-1]
 	img = get_image(img_path, 200, is_crop=False)  # read image
 	img = doresize2(img, [200,200])  # resize image to 200x200
 	img_re = scipy.misc.imresize(img, [768,768])
-	scipy.misc.imsave('./output/LR/lr.jpg',img_re)
+	scipy.misc.imsave('../Result/sr/LR/' + img_name,img_re)
 	
 	
 	# divide image
@@ -58,7 +61,7 @@ def super_resolution(sess, dcgan, img_path):
 	# SR process
 	samples = sess.run(dcgan.G, feed_dict={dcgan.inputs: batch_inputs})
 	save_img = merge_overlap(samples, [8, 8], [24, 24])
-	scipy.misc.imsave('./output/SR/reconstruct.jpg',save_img)	
+	scipy.misc.imsave('../Result/sr/SR/' + img_name,save_img)	
 	
 	print ('Finish!')
 	return  np.asarray(save_img)

@@ -125,4 +125,8 @@ def conditional_sampling_from_real_image(encoder_definition, encoder_weights,
         util.save_image(img, name)
         if write_labels:
             util.write_label_to_img(name, label)
+
+    del net 
+    del encoder
+    del generator
     return output_image, list_samples
