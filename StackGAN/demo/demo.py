@@ -158,10 +158,10 @@ def save_super_images(sample_batchs, hr_sample_batchs,
 
         fullpath = '%s/sentence%d.jpg' % (save_dir, startID + j)
         superimage = drawCaption(np.uint8(superimage), captions_batch[j])
-        scipy.misc.imsave(fullpath, superimage)
+        #scipy.misc.imsave(fullpath, superimage)
         hr_img = hr_sample_batchs[0][j]
         hr_img = (hr_img + 1.0) * 127.5
-        scipy.misc.imsave('%s/result%d.jpg' % (save_dir, startID + j), hr_img)
+        scipy.misc.imsave('../Result/characters/%d.jpg' % (startID + j), hr_img)
 
 
 if __name__ == "__main__":
